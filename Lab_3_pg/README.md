@@ -13,9 +13,9 @@ L'objectif de ce Lab 3 c'est de déployer une application (en micro-services) da
 
 Variables pour ce Lab
 ```
-RESOURCE_GROUP="RG_Lab_3_pg"
-LOCATION="westeurope"
-POSTGRESQL_NAME="pglab3"
+RESOURCE_GROUP="rg-lab-3-pg"
+LOCATION="northeurope"
+POSTGRESQL_NAME="pglab3fnwz6204"
 POSTGRESQL_ADMINUSER="adminDB"
 POSTGRESQL_ADMINPASSWORD="Password123$"
 POSTGRESQL_SKUNAME="Standard_B1ms"
@@ -29,7 +29,7 @@ APP_API_NAME="rugby-api"
 APP_API_IMAGE_VERSION="1.0.0"
 APP_FRONT_NAME="rugby-front"
 APP_FRONT_IMAGE_VERSION="1.0.0"
-ENVIRONMENT_NAME="Lab-3-pg-env"
+ENVIRONMENT_NAME="lab-3-pg-env"
 
 ```
 Création de "resource group"
@@ -144,7 +144,7 @@ az containerapp create \
   --image $ACR_NAME.azurecr.io/$APP_API_NAME:$APP_API_IMAGE_VERSION \
   --registry-username $ACR_NAME \
   --registry-password $REGISTRY_PASSWORD \
-  --secrets secret-db-host=pglab3.postgres.database.azure.com secret-db-user=adminDB secret-db-password=Password123$ secret-db-database=rugby_api secret-db-port=5432 \
+  --secrets secret-db-host=pglab3fnwz6204.postgres.database.azure.com secret-db-user=adminDB secret-db-password=Password123$ secret-db-database=rugby_api secret-db-port=5432 \
   --env-vars DB_HOST=secretref:secret-db-host DB_USER=secretref:secret-db-user DB_PASS=secretref:secret-db-password DB_NAME=secretref:secret-db-database DB_PORT=secretref:secret-db-port \
   --target-port 3000 \
   --ingress external \
@@ -163,7 +163,7 @@ Résultat
 ```
 Nombre de plaquages OK
 ```
-curl https://rugby-api.purpleisland-7a4fc55f.westeurope.azurecontainerapps.io/plaquage-ok/get
+curl https://rugby-api.blacktree-1ed6691d.northeurope.azurecontainerapps.io/plaquage-ok/get
 ```
 Résultat
 ```
@@ -171,17 +171,17 @@ Résultat
 ```
 Ajout de plaquage OK
 ```
-curl -X POST -H "Content-Type: application/json" https://rugby-api.purpleisland-7a4fc55f.westeurope.azurecontainerapps.io/plaquage-ok/add
+curl -X POST -H "Content-Type: application/json" https://rugby-api.blacktree-1ed6691d.northeurope.azurecontainerapps.io/plaquage-ok/add
 ```
 Reset plaquage OK
 ```
-curl -X POST -H "Content-Type: application/json" https://rugby-api.purpleisland-7a4fc55f.westeurope.azurecontainerapps.io/plaquage-ok/reset
+curl -X POST -H "Content-Type: application/json" https://rugby-api.blacktree-1ed6691d.northeurope.azurecontainerapps.io/plaquage-ok/reset
 ```
 On peut également faire également sur les plaquages KO
 ```
-curl https://rugby-api.purpleisland-7a4fc55f.westeurope.azurecontainerapps.io/plaquage-ko/get
-curl -X POST -H "Content-Type: application/json" https://rugby-api.purpleisland-7a4fc55f.westeurope.azurecontainerapps.io/plaquage-ko/add
-curl -X POST -H "Content-Type: application/json" https://rugby-api.purpleisland-7a4fc55f.westeurope.azurecontainerapps.io/plaquage-ko/reset
+curl https://rugby-api.blacktree-1ed6691d.northeurope.azurecontainerapps.io/plaquage-ko/get
+curl -X POST -H "Content-Type: application/json" https://rugby-api.blacktree-1ed6691d.northeurope.azurecontainerapps.io/plaquage-ko/add
+curl -X POST -H "Content-Type: application/json" https://rugby-api.blacktree-1ed6691d.northeurope.azurecontainerapps.io/plaquage-ko/reset
 ```
 Pour le Front<br>
 Récupération de l'url de l'api:<br>

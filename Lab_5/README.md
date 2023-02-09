@@ -23,11 +23,11 @@ __Ce Lab est indépendant des autres labs__
 ### Affectation des variables
 
 ```bash
-RESOURCE_GROUP="RG-Lab5"
-LOCATION="eastus2"
+RESOURCE_GROUP="rg-lab-5"
+LOCATION="northeurope"
 CONTAINERAPP_NAME="nginx"
 CONTAINERAPPS_ENVIRONMENT="my-environment-lab5"
-LOG_ANALYTICS_NAME="stan-workspace-lab5"
+LOG_ANALYTICS_NAME="fnwz6204-workspace-lab5"
 ```
 
 ### Création d'un ressource group
